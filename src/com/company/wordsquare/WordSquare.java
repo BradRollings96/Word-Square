@@ -6,10 +6,10 @@ public class WordSquare {
 
     ArrayList<String> wordSquareWords = new ArrayList<>();
 
-    //columnWordIndex goes to the right if the letters of a column are equal to a word
+    //columnWordIndex goes to the right (increments) if the letters of a column are equal to a word
     int columnWordIndex;
 
-    //word row index goes down a row to the next word if it finds a match
+    //word row index goes down a row to the next word (increments) if it finds a match
     int wordRowIndex;
     boolean hasWordSquareBeenFound;
 
