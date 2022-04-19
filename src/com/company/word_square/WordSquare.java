@@ -7,23 +7,17 @@ public class WordSquare {
     ArrayList<String> wordSquareWords = new ArrayList<>();
 
     //columnWordIndex goes to the right (increments) if the letters of a column are equal to a word
-    int columnWordIndex;
+    int columnWordIndex = 0;
 
     //wordRowIndex goes down a row to the next word (increments) if it finds a match
-    int wordRowIndex;
-    boolean hasWordSquareBeenFound;
+    int wordRowIndex = 0;
+    boolean hasWordSquareBeenFound = false;
 
-    public WordSquare() {
-        this.columnWordIndex = 0;
-        this.wordRowIndex = 0;
-        this.hasWordSquareBeenFound = false;
-    }
 
     //Runs permutation to find every possible combination of the array provided from WordFinder
     public ArrayList<String> findAllPossibleWords(ArrayList<String> wordsFound, int currentIndex) {
-
-        if (this.wordSquareWords.size() == wordsFound.size()) {
-            return this.wordSquareWords;
+        if (wordSquareWords.size() == wordsFound.size()) {
+            return wordSquareWords;
         }
         for (int indexPosition = currentIndex; indexPosition < wordsFound.size(); indexPosition++) {
             java.util.Collections.swap(wordsFound, indexPosition, currentIndex);
@@ -32,7 +26,7 @@ public class WordSquare {
         }
 
         hasMatchBeenFound(wordsFound, currentIndex);
-        return this.wordSquareWords;
+        return wordSquareWords;
     }
 
     //This works by concatenating the first element of each word and checking if the result is equal to the word on the first row.
@@ -40,14 +34,14 @@ public class WordSquare {
     private void hasMatchBeenFound(ArrayList<String> wordsFound, int currentIndex) {
         int endOfWords = wordsFound.size() - 1;
         if (currentIndex == endOfWords) {
-            String columnWord = this.findColumnWord(wordsFound);
+            String columnWord = findColumnWord(wordsFound);
 
-            if (columnWord.equals(wordsFound.get(this.wordRowIndex))) {
-                this.wordSquareWords.add(columnWord);
-                this.wordRowIndex++;
-                this.columnWordIndex++;
-                ArrayList<String> fullWordSquare = this.isWordSquareValid(wordsFound);
+            if (columnWord.equals(wordsFound.get(wordRowIndex))) {
+                wordSquareWords.add(columnWord);
+                wordRowIndex++;
+                columnWordIndex++;
 
+                ArrayList<String> fullWordSquare = isWordSquareValid(wordsFound);
                 fullWordSquare.forEach(System.out::println);
             }
         }
@@ -56,30 +50,30 @@ public class WordSquare {
     private ArrayList<String> isWordSquareValid(ArrayList<String> wordsFound) {
         String columnWord = "";
 
-        if (this.wordRowIndex == wordsFound.size()) {
-            return this.wordSquareWords;
+        if (wordRowIndex == wordsFound.size()) {
+            return wordSquareWords;
         }
         for (int characterIndex = 0; characterIndex < wordsFound.get(wordRowIndex).length(); characterIndex++) {
             columnWord += wordsFound.get(wordRowIndex).charAt(characterIndex);
         }
 
-        if (columnWord.equals(wordsFound.get(this.wordRowIndex))) {
-            this.wordSquareWords.add(columnWord);
-            this.wordRowIndex++;
-            this.columnWordIndex++;
-            if (this.wordRowIndex == wordsFound.size()) {
-                return this.wordSquareWords;
+        if (columnWord.equals(wordsFound.get(wordRowIndex))) {
+            wordSquareWords.add(columnWord);
+            wordRowIndex++;
+            columnWordIndex++;
+            if (wordRowIndex == wordsFound.size()) {
+                return wordSquareWords;
             } else {
-                this.isWordSquareValid(wordsFound);
+                isWordSquareValid(wordsFound);
             }
         }
-        return this.wordSquareWords;
+        return wordSquareWords;
     }
 
     private String findColumnWord(ArrayList<String> wordsFound) {
         String columnWord = "";
         for (String word : wordsFound) {
-            columnWord += word.charAt(this.columnWordIndex);
+            columnWord += word.charAt(columnWordIndex);
         }
         return columnWord;
     }
