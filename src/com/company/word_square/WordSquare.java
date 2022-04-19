@@ -1,4 +1,4 @@
-package com.company.wordsquare;
+package com.company.word_square;
 
 import java.util.ArrayList;
 
@@ -19,15 +19,15 @@ public class WordSquare {
         this.hasWordSquareBeenFound = false;
     }
 
-    public ArrayList<String> permute(ArrayList<String> wordsFound, int currentIndex) {
+    public ArrayList<String> findAllPossibleWords(ArrayList<String> wordsFound, int currentIndex) {
 
         if(this.wordSquareWords.size() == wordsFound.size()) {
             return this.wordSquareWords;
         }
-        for (int i = currentIndex; i < wordsFound.size(); i++) {
-            java.util.Collections.swap(wordsFound, i, currentIndex);
-            permute(wordsFound, currentIndex + 1);
-            java.util.Collections.swap(wordsFound, currentIndex, i);
+        for (int indexPosition = currentIndex; indexPosition < wordsFound.size(); indexPosition++) {
+            java.util.Collections.swap(wordsFound, indexPosition, currentIndex);
+            findAllPossibleWords(wordsFound, currentIndex + 1);
+            java.util.Collections.swap(wordsFound, currentIndex, indexPosition);
         }
 
         if (currentIndex == wordsFound.size() - 1) {
@@ -62,8 +62,8 @@ public class WordSquare {
         if (this.wordRowIndex == wordsFound.size()) {
             return this.wordSquareWords;
         }
-        for (int counter = 0; counter < wordsFound.get(wordRowIndex).length(); counter++) {
-            columnWord += wordsFound.get(wordRowIndex).charAt(counter);
+        for (int characterIndex = 0; characterIndex < wordsFound.get(wordRowIndex).length(); characterIndex++) {
+            columnWord += wordsFound.get(wordRowIndex).charAt(characterIndex);
         }
 
         if (columnWord.equals(wordsFound.get(this.wordRowIndex))) {
