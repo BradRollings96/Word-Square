@@ -25,6 +25,10 @@ public class App {
 
         System.out.println("\n");
 
+        findUniqueCharacters(lengthOfWords, allCharacters);
+    }
+
+    private static void findUniqueCharacters(int lengthOfWords, String allCharacters) {
         ArrayList<Character> charArray = new ArrayList<>();
 
         for(int characterIndex = 0; characterIndex < allCharacters.length(); characterIndex++) {
@@ -49,9 +53,8 @@ public class App {
             System.exit(0);
         }
 
-        Set<String> wordsFound = wordFinder.findOuterWord(wordFinder, uniqueArrayChars);
+        Set<String> wordsFound = wordFinder.findWords(wordFinder, uniqueArrayChars);
         ArrayList<String> wordsFoundList = new ArrayList<>(wordsFound);
-
         int currentIndex = 0;
 
         WordSquare wordSquare = new WordSquare();

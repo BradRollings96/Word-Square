@@ -9,7 +9,7 @@ public class WordSquare {
     //columnWordIndex goes to the right (increments) if the letters of a column are equal to a word
     int columnWordIndex;
 
-    //word row index goes down a row to the next word (increments) if it finds a match
+    //wordRowIndex goes down a row to the next word (increments) if it finds a match
     int wordRowIndex;
     boolean hasWordSquareBeenFound;
 
@@ -21,7 +21,7 @@ public class WordSquare {
 
     public ArrayList<String> findAllPossibleWords(ArrayList<String> wordsFound, int currentIndex) {
 
-        if(this.wordSquareWords.size() == wordsFound.size()) {
+        if (this.wordSquareWords.size() == wordsFound.size()) {
             return this.wordSquareWords;
         }
         for (int indexPosition = currentIndex; indexPosition < wordsFound.size(); indexPosition++) {
@@ -30,30 +30,29 @@ public class WordSquare {
             java.util.Collections.swap(wordsFound, currentIndex, indexPosition);
         }
 
+        hasMatchBeenFound(wordsFound, currentIndex);
+
+        return this.wordSquareWords;
+    }
+
+    private void hasMatchBeenFound(ArrayList<String> wordsFound, int currentIndex) {
         if (currentIndex == wordsFound.size() - 1) {
+            String columnWord = this.findColumnWord(wordsFound);
 
-            if (!this.hasWordSquareBeenFound) {
+            if (columnWord.equals(wordsFound.get(this.wordRowIndex))) {
+                this.wordSquareWords.add(columnWord);
+                this.wordRowIndex++;
+                this.columnWordIndex++;
+                ArrayList<String> fullWordSquare = this.isWordSquareValid(wordsFound);
 
-                String columnWord = this.findColumnWord(wordsFound);
-
-                if (columnWord.equals(wordsFound.get(this.wordRowIndex))) {
-                    this.wordSquareWords.add(columnWord);
-                    this.wordRowIndex++;
-                    this.columnWordIndex++;
-                    ArrayList<String> fullWordSquare = this.isWordSquareValid(wordsFound);
-
-                    fullWordSquare.forEach(System.out::println);
-
-                } else {
-                    return this.wordSquareWords;
-                }
+                fullWordSquare.forEach(System.out::println);
             }
             //TODO: If we've iterated through all the values and the word square hasn't been found
            /* if (wordSquare.wordSquareWords.size() == wordSquare.listOfWords.size()) {
                 System.out.println("Error: Unable to make a word square with the words provided");
             }*/
         }
-        return this.wordSquareWords;
+
     }
 
     private ArrayList<String> isWordSquareValid(ArrayList<String> wordsFound) {
@@ -67,14 +66,12 @@ public class WordSquare {
         }
 
         if (columnWord.equals(wordsFound.get(this.wordRowIndex))) {
-
             this.wordSquareWords.add(columnWord);
             this.wordRowIndex++;
             this.columnWordIndex++;
             if (this.wordRowIndex == wordsFound.size()) {
                 return this.wordSquareWords;
-            }
-            else {
+            } else {
                 this.isWordSquareValid(wordsFound);
             }
         }
