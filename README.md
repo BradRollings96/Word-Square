@@ -22,11 +22,11 @@ Here is an example of how this application works, given the two arrays below:
 
 #### findCharInWord
 
-1. The `findCharInWord` method works by starting with the first element of the char array and going through the characters of the first word in the word array, if this character from the 
-char array is found in this word, then a call to the method `returnFoundWords` is made. If the letter is not found, and the end char of the word has been reached, then the variable `wordIndex`
+1. The `findCharInWord` method works by starting with the first element of the `charArray` and going through the characters of the first word in the `wordArray`, if this character from the 
+`charArray` is found in this word, then a call to the method `returnFoundWords` is made. If the letter is not found, and the end char of the word has been reached, then the variable `wordIndex`
 is incremented in an attempt to find the first character `'d'` in the next word of the array. These steps are repeated until the first letter has checked every char from 
 every word in the `wordArray`, then the `charArrayIndex` variable is incremented by one and the variable `wordIndex` is reset to zero. The next letter `'e'` is then compared against all the characters in the `wordArray`.
-These steps are repeated until the last letter `'v'` is reached and then return the variable  `foundWordList`
+These steps are repeated until the last letter `'v'` is reached and then the variable `foundWordList` is returned
    
 
 2. When a match is finally made, which in this example would be the letter `'d'` on the word `send`, then a call the method `returnFoundWords` is made
@@ -41,8 +41,8 @@ If there is a match, concatenate this letter to a string variable called `letter
 This word is then added to an array list `foundWordsList` and the method is exited.
    
 
-5. Once the method is returned back to `findCharInWord`, then the `wordIndex` variable is incremented so the letter from the `charArray` can also be checked against the other words remaining in the `wordArray`
+5. Once the method is returned to `findCharInWord`, then the `wordIndex` variable is incremented so the letter `'d'` from the `charArray` can also be checked against the other words remaining in the `wordArray`, if a match is found on any other word, steps `2-3` will be repeated 
 
 
 6. When the first letter has been checked against all the words, and therefore the `wordindex` is equal to the length of the `wordArray`, the `wordIndex` is reset back to zero and the `charArrayIndex` is incremented by one. This will now
-test the next character along in the `charArray` `'b'` with the first word in the `wordArray` and all the steps above are repeated until the last letter of the `charArray` has been reached
+test the next character along in the `charArray` `'b'` with the first word in the `wordArray` and all the steps above are repeated until the last letter `'v'` of the `charArray` has been reached
