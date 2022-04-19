@@ -31,12 +31,12 @@ public class WordSquare {
         }
 
         hasMatchBeenFound(wordsFound, currentIndex);
-
         return this.wordSquareWords;
     }
 
     private void hasMatchBeenFound(ArrayList<String> wordsFound, int currentIndex) {
-        if (currentIndex == wordsFound.size() - 1) {
+        int endOfWords = wordsFound.size() - 1;
+        if (currentIndex == endOfWords) {
             String columnWord = this.findColumnWord(wordsFound);
 
             if (columnWord.equals(wordsFound.get(this.wordRowIndex))) {
@@ -47,12 +47,7 @@ public class WordSquare {
 
                 fullWordSquare.forEach(System.out::println);
             }
-            //TODO: If we've iterated through all the values and the word square hasn't been found
-           /* if (wordSquare.wordSquareWords.size() == wordSquare.listOfWords.size()) {
-                System.out.println("Error: Unable to make a word square with the words provided");
-            }*/
         }
-
     }
 
     private ArrayList<String> isWordSquareValid(ArrayList<String> wordsFound) {

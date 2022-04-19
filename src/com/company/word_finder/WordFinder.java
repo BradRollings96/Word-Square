@@ -8,10 +8,12 @@ public class WordFinder {
     public ArrayList<String> wordList = new ArrayList<>();
     private final Set<String> foundWordsList = new HashSet<>();
 
-    private int wordListIndex = 0; //we initially search for the first word in our dictionary
-    private int userEnteredCharIndex = 0; //we want to iterate through the char array from the first value, so we always start with zero
-    private int userEnteredCharOccurrence = 0; //when we have found a match on a letter, we need to increment through every char
-    private String lettersFound = "";
+    private int wordListIndex = 0;
+    private int userEnteredCharIndex = 0; //Used to compare every character from userEnteredChars array to each character of each word
+    //of the wordList array.
+    private int userEnteredCharOccurrence = 0; //Used to compare every character from userEnteredChars to a single word from wordList
+    // where a match has been found.
+    private String lettersFound = ""; //Used to see if a full word from wordList can be made from the elements provided via userEnteredChars.
 
     //TODO: Swap out these values with a text file containing words
     public ArrayList<String> setupWordList(WordFinder wordFinder, int lengthOfWords, String allCharacters) {
@@ -35,9 +37,9 @@ public class WordFinder {
                 if (allCharacters.equals("aaaeeeefhhmoonssrrrrttttw")) {
                     wordFinder.wordList.add("earth");
                     wordFinder.wordList.add("threw");
+                    wordFinder.wordList.add("feast");
                     wordFinder.wordList.add("armor");
                     wordFinder.wordList.add("stone");
-                    wordFinder.wordList.add("feast");
                 }
                 else if (allCharacters.equals("aabbeeeeeeeehmosrrrruttvv")) {
                     wordFinder.wordList.add("above");
@@ -63,15 +65,14 @@ public class WordFinder {
     }
 
     public Set<String> findWords(WordFinder wordFinder, ArrayList<Character> userEnteredChars) {
-
         //If all elements from userEnteredChars has been compared to every character from each element of wordList,
-        //return all of the words found
+        //return all of the words found.
         if (wordFinder.userEnteredCharIndex == userEnteredChars.size() - 1) {
             return wordFinder.compareCharsToAllWords(wordFinder, userEnteredChars);
         }
         //If a letter from userEnteredChars has been compared to every character of each element of wordList, move onto
         //the next letter and reset the value of wordListIndex to zero, so this next letter can be compared against all of
-        //the characters from wordList
+        //the characters from wordList.
         if (wordFinder.wordListIndex == wordFinder.wordList.size()) {
             wordFinder.userEnteredCharIndex++;
             wordFinder.wordListIndex = 0;
@@ -83,14 +84,14 @@ public class WordFinder {
     //Compare every single letter from userEnteredChars against every char from every word in the wordList
     private Set<String> compareCharsToAllWords(WordFinder wordFinder, ArrayList<Character> userEnteredChars) {
         //If a match of a letter to a word has been made, every character within userEnteredChars needs to be compared
-        //against the word to see if that word can be made from the characters provided
+        //against the word to see if that word can be made from the characters provided.
         wordFinder.userEnteredCharOccurrence = 0;
 
         //compares the first character from userEnteredChars against all the characters in the first word of the
         //wordList. If a match of a char to a word has been made, call returnFoundWords(), otherwise, compare this letter
         //against the next word in the wordList. If this letter has been compared against every character from all the words
         //in the wordList, increment the value of userEnteredCharIndex by 1 and repeat these steps with the next letter to see
-        //if a match can be found
+        //if a match can be found.
         for (int currentCharacterIndex = 0; currentCharacterIndex < wordFinder.wordList.get(wordListIndex).length() + 1; currentCharacterIndex++) {
             if (wordFinder.userEnteredCharIndex == userEnteredChars.size() - 1) {
                 return wordFinder.compareCharsToSingleWord(wordFinder, userEnteredChars);
