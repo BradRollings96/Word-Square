@@ -1,7 +1,6 @@
 package com.company.word_finder;
 
 import com.company.word_square.WordSquare;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;

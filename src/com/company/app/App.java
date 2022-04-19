@@ -1,7 +1,6 @@
 package com.company.app;
 
 import java.util.Scanner;
-
 import static com.company.word_finder.WordFinder.findUniqueCharacters;
 
 public class App {
@@ -19,7 +18,6 @@ public class App {
         String allCharacters = readInCharacters();
         findUniqueCharacters(lengthOfWords, allCharacters);
     }
-
 
     public static String readInCharacters() {
         java.util.Scanner wordScanner = new java.util.Scanner(System.in);

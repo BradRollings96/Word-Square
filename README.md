@@ -46,3 +46,8 @@ This word is then added to an array list `foundWordsList` and the method is exit
 
 6. When the first letter has been checked against all the words, and therefore the `wordindex` is equal to the length of the `wordArray`, the `wordIndex` is reset back to zero and the `charArrayIndex` is incremented by one. This will now
 test the next character along in the `charArray` `'b'` with the first word in the `wordArray` and all the steps above are repeated until the last letter `'v'` of the `charArray` has been reached
+   
+### Running the Application
+
+To run the app, run the main method found in `src/com.company/main`, or you can execute the distributable jar file located in `/out/artifacts/Word_Square_jar/Word-Square.jar` via the command line
+like so: `java -jar {path_to_jar_file}/Word-Square.jar`
