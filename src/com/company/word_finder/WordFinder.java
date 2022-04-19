@@ -26,8 +26,7 @@ public class WordFinder {
                     wordList.add("oven");
                     wordList.add("rose");
                     wordList.add("send");
-                }
-                else if(allCharacters.equals("aaccdeeeemmnnnoo")) {
+                } else if (allCharacters.equals("aaccdeeeemmnnnoo")) {
                     wordList.add("acme");
                     wordList.add("once");
                     wordList.add("need");
@@ -41,8 +40,7 @@ public class WordFinder {
                     wordList.add("feast");
                     wordList.add("armor");
                     wordList.add("stone");
-                }
-                else if (allCharacters.equals("aabbeeeeeeeehmosrrrruttvv")) {
+                } else if (allCharacters.equals("aabbeeeeeeeehmosrrrruttvv")) {
                     wordList.add("above");
                     wordList.add("revue");
                     wordList.add("ember");
@@ -51,7 +49,7 @@ public class WordFinder {
                 }
                 break;
             case 7:
-                if(allCharacters.equals("aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy")) {
+                if (allCharacters.equals("aaaaaaaaabbeeeeeeedddddggmmlloooonnssssrrrruvvyyy")) {
                     wordList.add("renamed");
                     wordList.add("degrade");
                     wordList.add("amoebas");
@@ -68,7 +66,7 @@ public class WordFinder {
     public static void findUniqueCharacters(int lengthOfWords, String allCharacters) {
         ArrayList<Character> charArray = new ArrayList<>();
 
-        for(int characterIndex = 0; characterIndex < allCharacters.length(); characterIndex++) {
+        for (int characterIndex = 0; characterIndex < allCharacters.length(); characterIndex++) {
             charArray.add(allCharacters.charAt(characterIndex));
         }
 
@@ -94,7 +92,10 @@ public class WordFinder {
         int currentIndex = 0;
 
         WordSquare wordSquare = new WordSquare();
-        wordSquare.findAllPossibleWords(wordsFoundList, currentIndex);
+
+        ArrayList<String> wordSquareResult = wordSquare.findAllPossibleWords(wordsFoundList, currentIndex);
+
+        wordSquareResult.forEach(System.out::println);
     }
 
     public Set<String> findWords(ArrayList<Character> userEnteredChars) {

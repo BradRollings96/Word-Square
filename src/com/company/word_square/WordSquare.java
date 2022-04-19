@@ -1,7 +1,5 @@
 package com.company.word_square;
 
-import com.company.app.App;
-
 import java.util.ArrayList;
 
 
@@ -21,21 +19,17 @@ public class WordSquare {
             findAllPossibleWords(wordsFound, currentIndex + 1);
             java.util.Collections.swap(wordsFound, currentIndex, indexPosition);
         }
-
-        //If the for loop has tried every possible combination and has been unsuccessful in creating a word square,
-        // notify the user and exit the application
-        if (currentIndex == 0 && wordSquareWords.size() != wordsFound.size()) {
-            System.out.println("Error: Unable to make word square from words provided\nEnter any button to exit");
-            App.exitApplication();
-        }
-
-        returnWordSquare(wordsFound, currentIndex);
-        return wordSquareWords;
+        return createWordSquare(wordsFound, currentIndex);
     }
 
     //If it is, then treat this as the first row and column and call isWordSquareValid()
-    private void returnWordSquare(ArrayList<String> wordsFound, int currentIndex) {
+    private ArrayList<String> createWordSquare(ArrayList<String> wordsFound, int currentIndex) {
         int endOfWords = wordsFound.size() - 1;
+
+        if (wordRowIndex == wordsFound.size()) {
+            return wordSquareWords;
+        }
+
         if (currentIndex == endOfWords) {
             String columnWord = findColumnWord(wordsFound);
 
@@ -47,32 +41,7 @@ public class WordSquare {
                 wordRowIndex++;
                 columnWordIndex++;
 
-                isWordSquareValid(wordsFound).forEach(System.out::println);
-            }
-        }
-    }
-
-    //Once the first row and first column are equal, then check that the second letter of each word
-    //is equal to the second element, then check that the third character of each element is equal to the third word and so on...
-    private ArrayList<String> isWordSquareValid(ArrayList<String> wordsFound) {
-        String columnWord = "";
-
-        //When this condition is true, a word square has been made, so return its value
-        if (wordRowIndex == wordsFound.size()) {
-            return wordSquareWords;
-        }
-        for (int characterIndex = 0; characterIndex < wordsFound.get(wordRowIndex).length(); characterIndex++) {
-            columnWord += wordsFound.get(wordRowIndex).charAt(characterIndex);
-        }
-
-        if (columnWord.equals(wordsFound.get(wordRowIndex))) {
-            wordSquareWords.add(columnWord);
-            wordRowIndex++;
-            columnWordIndex++;
-            if (wordRowIndex == wordsFound.size()) {
-                return wordSquareWords;
-            } else {
-                isWordSquareValid(wordsFound);
+                createWordSquare(wordsFound, currentIndex);
             }
         }
         return wordSquareWords;

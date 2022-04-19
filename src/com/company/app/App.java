@@ -20,11 +20,6 @@ public class App {
         findUniqueCharacters(lengthOfWords, allCharacters);
     }
 
-    public static void exitApplication() {
-        java.util.Scanner exitScanner = new java.util.Scanner(System.in);
-        exitScanner.nextLine();
-        System.exit(0);
-    }
 
     public static String readInCharacters() {
         java.util.Scanner wordScanner = new java.util.Scanner(System.in);
