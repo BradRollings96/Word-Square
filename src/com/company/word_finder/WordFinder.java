@@ -1,13 +1,15 @@
 package com.company.word_finder;
 
+import com.company.word_square.WordSquare;
+
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class WordFinder {
     public ArrayList<String> wordList = new ArrayList<>();
     private final Set<String> foundWordsList = new HashSet<>();
-
     private int wordListIndex = 0;
     private int userEnteredCharIndex = 0; //Used to compare every character from userEnteredChars array to each character of each word
     //of the wordList array.
@@ -61,6 +63,38 @@ public class WordFinder {
                 break;
         }
         return wordList;
+    }
+
+    public static void findUniqueCharacters(int lengthOfWords, String allCharacters) {
+        ArrayList<Character> charArray = new ArrayList<>();
+
+        for(int characterIndex = 0; characterIndex < allCharacters.length(); characterIndex++) {
+            charArray.add(allCharacters.charAt(characterIndex));
+        }
+
+        Set<Character> uniqueCharacters = new HashSet<>(charArray);
+        ArrayList<Character> uniqueArrayChars = new ArrayList<>(uniqueCharacters);
+
+        retrieveWordList(lengthOfWords, allCharacters, uniqueArrayChars);
+    }
+
+    private static void retrieveWordList(int lengthOfWords, String allCharacters, ArrayList<Character> uniqueArrayChars) {
+        WordFinder wordFinder = new WordFinder();
+        ArrayList<String> wordList = wordFinder.setupWordList(lengthOfWords, allCharacters);
+
+        if (wordList.size() == 0) {
+            System.out.println("Error: Unable to process request, enter any button to exit");
+            Scanner exitScanner = new Scanner(System.in);
+            exitScanner.nextLine();
+            System.exit(0);
+        }
+
+        Set<String> wordsFound = wordFinder.findWords(uniqueArrayChars);
+        ArrayList<String> wordsFoundList = new ArrayList<>(wordsFound);
+        int currentIndex = 0;
+
+        WordSquare wordSquare = new WordSquare();
+        wordSquare.findAllPossibleWords(wordsFoundList, currentIndex);
     }
 
     public Set<String> findWords(ArrayList<Character> userEnteredChars) {

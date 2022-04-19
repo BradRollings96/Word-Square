@@ -12,7 +12,6 @@ public class WordFinderTest {
         WordFinder wordFinder = new WordFinder();
         ArrayList<Character> charArray = new ArrayList<>();
 
-        //Given a character Array that contains all the letters that will make all the words from the wordList array
         charArray.add('a');
         charArray.add('c');
         charArray.add('d');
@@ -26,10 +25,8 @@ public class WordFinderTest {
         wordFinder.wordList.add("once");
         wordFinder.wordList.add("need");
 
-        //when we findOuterWord
         Set<String> isMatch = wordFinder.findWords(charArray);
 
-        //then we will expect the length of returnFoundWords to be equal to the length of the wordList
         Assertions.assertEquals(isMatch.size(), wordFinder.wordList.size());
     }
 
@@ -38,7 +35,6 @@ public class WordFinderTest {
         WordFinder wordFinder = new WordFinder();
         ArrayList<Character> charArray = new ArrayList<>();
 
-        //Given a character Array containing letters that will not make all of the words from the wordList
         charArray.add('a');
         charArray.add('c');
         charArray.add('d');
@@ -52,10 +48,8 @@ public class WordFinderTest {
         wordFinder.wordList.add("open");
         wordFinder.wordList.add("need");
 
-        //when we call to findCharInWord is made
         Set<String> isMatch = wordFinder.findWords(charArray);
 
-        //then we will expect the length of findCharInWord to be less than the length of the wordList array
         Assertions.assertNotEquals(isMatch.size(), wordFinder.wordList.size());
     }
 }
