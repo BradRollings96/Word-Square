@@ -27,7 +27,7 @@ public class WordFinderTest {
         wordFinder.wordList.add("need");
 
         //when we findOuterWord
-        Set<String> isMatch = wordFinder.findWords(wordFinder, charArray);
+        Set<String> isMatch = wordFinder.findWords(charArray);
 
         //then we will expect the length of returnFoundWords to be equal to the length of the wordList
         Assertions.assertEquals(isMatch.size(), wordFinder.wordList.size());
@@ -53,7 +53,7 @@ public class WordFinderTest {
         wordFinder.wordList.add("need");
 
         //when we call to findCharInWord is made
-        Set<String> isMatch = wordFinder.findWords(wordFinder, charArray);
+        Set<String> isMatch = wordFinder.findWords(charArray);
 
         //then we will expect the length of findCharInWord to be less than the length of the wordList array
         Assertions.assertNotEquals(isMatch.size(), wordFinder.wordList.size());

@@ -19,6 +19,7 @@ public class WordSquare {
         this.hasWordSquareBeenFound = false;
     }
 
+    //Runs permutation to find every possible combination of the array provided from WordFinder
     public ArrayList<String> findAllPossibleWords(ArrayList<String> wordsFound, int currentIndex) {
 
         if (this.wordSquareWords.size() == wordsFound.size()) {
@@ -34,6 +35,8 @@ public class WordSquare {
         return this.wordSquareWords;
     }
 
+    //This works by concatenating the first element of each word and checking if the result is equal to the word on the first row.
+    //If it is, add this word to an array called
     private void hasMatchBeenFound(ArrayList<String> wordsFound, int currentIndex) {
         int endOfWords = wordsFound.size() - 1;
         if (currentIndex == endOfWords) {

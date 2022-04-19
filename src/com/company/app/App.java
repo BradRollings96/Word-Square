@@ -44,7 +44,7 @@ public class App {
     private static void retrieveWordList(int lengthOfWords, String allCharacters, ArrayList<Character> uniqueArrayChars) {
         WordFinder wordFinder = new WordFinder();
 
-        ArrayList<String> wordList = wordFinder.setupWordList(wordFinder, lengthOfWords, allCharacters);
+        ArrayList<String> wordList = wordFinder.setupWordList(lengthOfWords, allCharacters);
 
         if (wordList.size() == 0) {
             System.out.println("Error: Unable to process request, enter any button to exit");
@@ -53,7 +53,7 @@ public class App {
             System.exit(0);
         }
 
-        Set<String> wordsFound = wordFinder.findWords(wordFinder, uniqueArrayChars);
+        Set<String> wordsFound = wordFinder.findWords(uniqueArrayChars);
         ArrayList<String> wordsFoundList = new ArrayList<>(wordsFound);
         int currentIndex = 0;
 
