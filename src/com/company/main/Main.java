@@ -30,14 +30,9 @@ public class Main {
 
         ArrayList<String> wordsFoundList = new ArrayList<>(wordsFound);
 
-        System.out.println("words found " + wordsFoundList);
-
-        int k = 0;
+        int currentIndex = 0;
 
         WordSquare wordSquare = new WordSquare();
-        ArrayList<String> wordSquareWordsList = wordSquare.permute(wordsFoundList, k);
-
-        System.out.println(wordSquareWordsList);
-
+        wordSquare.permute(wordsFoundList, currentIndex);
     }
 }
