@@ -38,7 +38,7 @@ If there is a match, concatenate this letter to a string variable called `letter
 
 
 4. Eventually, if the correct characters are in `userEnteredChars`, the length of the `lettersFound` variable will be equal to the length of the word being searched for; which means that this word can be made from the characters provided in `userEnteredChars`.
-This word is then added to an array list `foundWordsList` and the method is exited.
+This word is then added to an array list `foundWordsList` and the method is exited
 
 
 #### compareCharsToAllWords
