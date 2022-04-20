@@ -10,13 +10,28 @@ public class App {
                 "\n e.g for a four letter word square, enter the number 4");
 
         Scanner numberScanner = new Scanner(System.in);
-        int lengthOfWords = numberScanner.nextInt();
+        String lengthOfWords = numberScanner.nextLine();
+        int lengthOfWordsNumber = 0;
+
+        try {
+            lengthOfWordsNumber = Integer.parseInt(lengthOfWords);
+        } catch (Exception e) {
+            exitApplication();
+        }
+
 
         System.out.println("Enter all of characters you wish to use for your word square one one line" +
                 "\nFor example: aaccdeeeemmnnnoo");
 
         String allCharacters = readInCharacters();
-        findUniqueCharacters(lengthOfWords, allCharacters);
+        findUniqueCharacters(lengthOfWordsNumber, allCharacters);
+    }
+
+    public static void exitApplication() {
+        System.out.println("An error has occurred: Enter any key to exit");
+        java.util.Scanner exitScanner = new java.util.Scanner(System.in);
+        exitScanner.nextLine();
+        System.exit(0);
     }
 
     public static String readInCharacters() {
