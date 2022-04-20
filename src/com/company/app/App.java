@@ -6,8 +6,8 @@ import static com.company.word_finder.WordFinder.findUniqueCharacters;
 public class App {
 
     public static void startup() {
-        System.out.println("Enter the dimensions for your word square from 4, 5, 7, " +
-                "\n e.g for a four letter word square, enter the number 4");
+        System.out.println("Enter the dimensions for your word square from 4, 5, 7 " +
+                "\ne.g for a four letter word square, enter the number 4");
 
         Scanner numberScanner = new Scanner(System.in);
         String lengthOfWords = numberScanner.nextLine();
