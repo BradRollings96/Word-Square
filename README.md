@@ -10,7 +10,7 @@ that make valid words, it then passes these  words to the word square to see if 
 
 ### Word Finder
 
-The way the word finder works is passing an array list of characters the user has provided into a function named `findWords`
+The way the word finder starts is passing an array list of characters the user has provided into a function named `findWords`, it then precedes to do the steps below
 
 #### Application Flow
 Here is an example of how this application works, given the two arrays below:
