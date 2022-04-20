@@ -19,7 +19,6 @@ public class App {
             exitApplication();
         }
 
-
         System.out.println("Enter all of characters you wish to use for your word square one one line" +
                 "\nFor example: aaccdeeeemmnnnoo");
 
@@ -39,7 +38,6 @@ public class App {
         String allCharacters = wordScanner.nextLine();
 
         System.out.println("\n");
-
         return allCharacters;
     }
 }
