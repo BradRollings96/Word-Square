@@ -3,22 +3,22 @@
 This is an application that works by initially entering a number representing what the dimensions
 of the word square should be 
 
-The second part you then have to enter the letters you want to use in the word square
+For the second part, you then have to enter the letters you want to use in the word square
 
-
-This application works via different components the first being a word finder which is designed to find words from the letters provided
-that are valid words, it then passes these valid words to the word square to see if can create a word square from the words provided
+This application works via different components, the first being a word finder which is designed to find words from the letters provided
+that make valid words, it then passes these  words to the word square to see if can create a word square from the words provided
 
 ### Word Finder
 
-The way the word finder works is by passing an array list of characters the user has provided into a function named `findCharInWord`
+The way the word finder works is passing an array list of characters the user has provided into a function named `findWords`
 
 #### Application Flow
 Here is an example of how this application works, given the two arrays below:
 
-`wordList = {"rose", "oven", "send", "ends"`
-<br></br>
-`userEnteredChars = ['d', 'e', 'n', 'o', 'r', 's', 'v']`
+```
+wordList = {"rose", "oven", "send", "ends"}
+userEnteredChars = ['d', 'e', 'n', 'o', 'r', 's', 'v']
+```
 
 #### compareCharsToAllWords
 
